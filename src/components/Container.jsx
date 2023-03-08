@@ -12,11 +12,15 @@ export const Container = () => {
     setUserText,
     translate,
     setTranslate,
+    translatePlaceholder,
     userSelectedTag,
     setUserSelectedTag,
     translateSelectedTag,
     setTranslateSelectedTag,
     handleExchangeLang,
+    handleTranslate,
+    handleSpeechText,
+    handleCopyText,
   } = useTranslate();
 
   return (
@@ -29,7 +33,7 @@ export const Container = () => {
         />
         <div className="h-full w-[2px] bg-teal-1/30" />
         <Textarea
-          placeholder="Translation"
+          placeholder={translatePlaceholder}
           disabled={true}
           readOnly={true}
           value={translate}
@@ -40,7 +44,10 @@ export const Container = () => {
       <div className="mb-[20px] flex items-center justify-between p-[10px]">
         <div className="flex items-center gap-[20px]">
           <Select lang={userSelectedTag} setSelected={setUserSelectedTag} />
-          <Controls />
+          <Controls
+            handleSpeechText={() => handleSpeechText(userText, userSelectedTag)}
+            handleCopyText={() => handleCopyText(userText)}
+          />
         </div>
         <FaExchangeAlt
           className="cursor-pointer"
@@ -51,10 +58,15 @@ export const Container = () => {
             lang={translateSelectedTag}
             setSelected={setTranslateSelectedTag}
           />
-          <Controls />
+          <Controls
+            handleSpeechText={() =>
+              handleSpeechText(translate, translateSelectedTag)
+            }
+            handleCopyText={() => handleCopyText(translate)}
+          />
         </div>
       </div>
-      <Button>Translate</Button>
+      <Button handleClick={handleTranslate}>Translate</Button>
     </div>
   );
 };
