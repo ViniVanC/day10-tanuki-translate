@@ -11,7 +11,7 @@ module.exports = {
         "teal-5": "#2f3e46",
       },
       backgroundImage: (theme) => ({
-        "gradient-1":
+        "gradient-teal":
           "linear-gradient(45deg, rgba(132,169,140,1) 0%, rgba(202,210,197,1) 100%)",
       }),
     },
