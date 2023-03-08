@@ -9,7 +9,7 @@ export const Textarea = ({
 }) => {
   return (
     <textarea
-      className="h-full w-[350px] resize-none bg-transparent p-[10px] placeholder:text-[18px] placeholder:text-teal-1"
+      className="h-[250px] w-[100%] resize-none bg-transparent p-[10px] placeholder:text-[18px] placeholder:text-teal-1 max-sm:h-[150px] sm:w-[350px]"
       spellCheck={false}
       placeholder={placeholder}
       disabled={disabled}

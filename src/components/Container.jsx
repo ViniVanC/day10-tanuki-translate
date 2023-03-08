@@ -24,46 +24,49 @@ export const Container = () => {
   } = useTranslate();
 
   return (
-    <div className="rounded-lg  bg-teal-4 p-[30px] text-teal-1 drop-shadow-lg max-sm:w-min">
-      <div className="flex h-[250px] flex-wrap justify-center">
-        <Textarea
-          placeholder="Enter text"
-          value={userText}
-          handleChange={setUserText}
-        />
-        <div className="h-full w-[2px] bg-teal-1/30" />
-        <Textarea
-          placeholder={translatePlaceholder}
-          disabled={true}
-          readOnly={true}
-          value={translate}
-          handleChange={setTranslate}
-        />
-      </div>
-      <div className="h-[2px] w-full bg-teal-1/30" />
-      <div className="mb-[20px] flex items-center justify-between p-[10px]">
-        <div className="flex items-center gap-[20px]">
-          <Select lang={userSelectedTag} setSelected={setUserSelectedTag} />
-          <Controls
-            handleSpeechText={() => handleSpeechText(userText, userSelectedTag)}
-            handleCopyText={() => handleCopyText(userText)}
+    <div className="rounded-lg  bg-teal-4 p-[30px] text-teal-1 drop-shadow-lg max-md:p-[20px] max-sm:w-min">
+      <div className="mb-[30px] flex w-full min-w-[250px] items-center justify-center gap-[20px] max-sm:flex-col sm:min-h-[250px]">
+        <div className="flex flex-col items-end gap-[10px]">
+          <Textarea
+            placeholder="Enter text"
+            value={userText}
+            handleChange={setUserText}
           />
+          <div className="flex items-center gap-[20px] pr-[10px]">
+            <Select lang={userSelectedTag} setSelected={setUserSelectedTag} />
+            <Controls
+              handleSpeechText={() =>
+                handleSpeechText(userText, userSelectedTag)
+              }
+              handleCopyText={() => handleCopyText(userText)}
+            />
+          </div>
         </div>
         <FaExchangeAlt
           className="cursor-pointer transition duration-300 hover:scale-110 active:scale-95"
           onClick={handleExchangeLang}
         />
-        <div className="flex items-center gap-[20px]">
-          <Select
-            lang={translateSelectedTag}
-            setSelected={setTranslateSelectedTag}
+        <div className="flex flex-col items-end gap-[10px]">
+          <Textarea
+            placeholder={translatePlaceholder}
+            disabled={true}
+            readOnly={true}
+            value={translate}
+            handleChange={setTranslate}
           />
-          <Controls
-            handleSpeechText={() =>
-              handleSpeechText(translate, translateSelectedTag)
-            }
-            handleCopyText={() => handleCopyText(translate)}
-          />
+          {/* <div className="h-[2px] w-full bg-teal-1/30" /> */}
+          <div className="flex items-center gap-[20px] pr-[10px]">
+            <Select
+              lang={translateSelectedTag}
+              setSelected={setTranslateSelectedTag}
+            />
+            <Controls
+              handleSpeechText={() =>
+                handleSpeechText(translate, translateSelectedTag)
+              }
+              handleCopyText={() => handleCopyText(translate)}
+            />
+          </div>
         </div>
       </div>
       <Button handleClick={handleTranslate}>Translate</Button>
