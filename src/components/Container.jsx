@@ -50,7 +50,7 @@ export const Container = () => {
           />
         </div>
         <FaExchangeAlt
-          className="cursor-pointer"
+          className="cursor-pointer transition duration-300 hover:scale-110 active:scale-95"
           onClick={handleExchangeLang}
         />
         <div className="flex items-center gap-[20px]">
